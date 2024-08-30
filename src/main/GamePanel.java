@@ -1,5 +1,8 @@
 package main;
 
+import entity.Entity;
+import entity.Player;
+
 import javax.swing.JPanel;
 
 import java.awt.Dimension;
@@ -15,8 +18,8 @@ public class GamePanel extends JPanel implements Runnable{
 
     public final int tileSize = originalTileSize * scale;
 
-    public final int screenCol = 21;
-    public final int screenRow = 13;
+    public final int screenCol = 23;
+    public final int screenRow = 14;
 
     public final int screenWidth = tileSize * screenCol;
     public final int screenHeight = tileSize * screenRow;
@@ -29,6 +32,9 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler keyH = new KeyHandler(this);
     Thread gameThread;
 
+
+    // PLAYER AND ENTITIES
+    Player player = new Player(this, keyH);
 
 
 
@@ -81,11 +87,14 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update() {
 
+        player.update();
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+
+        player.draw(g2);
 
         g2.dispose();
     }
