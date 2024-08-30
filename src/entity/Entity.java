@@ -3,6 +3,7 @@ package entity;
 import main.GamePanel;
 import main.KeyHandler;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Entity {
@@ -22,5 +23,13 @@ public class Entity {
     public Entity(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
+
+        setDefaultValues();
+        getSprites();
     }
+
+    public void setDefaultValues() {}
+    public void getSprites() {}
+    public void update() {}
+    public void draw(Graphics2D g2) {}
 }
