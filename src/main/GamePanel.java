@@ -2,6 +2,7 @@ package main;
 
 import entity.Entity;
 import entity.Player;
+import tiles.TileManager;
 
 import javax.swing.JPanel;
 
@@ -26,8 +27,9 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     // SYSTEM
-    KeyHandler keyH = new KeyHandler(this);
-    Thread gameThread;
+    public KeyHandler keyH = new KeyHandler(this);
+    public TileManager tileM = new TileManager(this);
+    public Thread gameThread;
 
 
     // PLAYER AND ENTITIES
@@ -90,6 +92,8 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+
+        tileM.draw(g2);
 
         player.draw(g2);
 
